@@ -1,0 +1,11 @@
+﻿GIT HUB
+# đưa source local lên github
+Bước 1: gõ trỏ tới thư mục source local, click phải git bash here gõ: git init để khởi động git trong thư mục
+Bước 2: remote tới github reponsitory https://github.com/anhnhat1506/tmdt.git đã tạo sẵn
+git remote add origin https://github.com/anhnhat1506/tmdt.git
+bước 3: thêm tất cả file ở thư mục local để tracking tất cả và đưa lên tất cả
+git add .
+
+neu gap loi: LF will be replaced by CRLF in git - What is that and is it important? [duplicate]
+thi go tiep lenh git:
+git config core.autocrlf true
