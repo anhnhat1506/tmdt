@@ -1,4 +1,12 @@
-h2{
+.ten-sp{
     color: blue;
-    line-height: 20px;
+    line-height: 10px;
+    padding-top: 20px;
+    padding-left: 11px;
+}
+img{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 80%;
+    border: 1px solid red;
 }
