@@ -21,11 +21,19 @@ img{
     text-decoration: underline;
 }
 .dat-hang{
-    width: 80%;
+    width: 100%;
     text-transform: uppercase;
     font-weight: bold;
 }
 .khung-anh{
     padding-top: 5px;
     padding-bottom: 5px;
+}
+.thong-so, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
 }
