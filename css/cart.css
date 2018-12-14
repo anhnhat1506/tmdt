@@ -1,0 +1,53 @@
+.thong-so, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+img{
+    text-align: center;
+}
+.hinh-gio-hang{
+    width: 50%;
+    margin-left: 44px;
+    padding: 0.5% 0;
+
+}
+.cart-sp-1{
+    margin-top: 5px;
+}
+.cart-sp-1 a{
+    text-decoration: none;
+}
+.price-cart{
+    text-align: center;
+    color: #e10c00;
+    font-size: 20px;
+}
+.dong-cart{
+    vertical-align:super;
+    text-decoration: underline;
+}
+.thanh-tien{
+    text-align: right;
+}
+.thanh-tien-1{
+    font-weight: bold;
+}
+.form-group{
+    width: 50%;
+}
+.form-inline .form-control {
+    width: 100%;
+}
+.phuc-vu{
+    font-weight: bold;
+}
+.btn-thanh-toan{
+    text-transform: uppercase;
+}
+.btn-thanh-toan .the-atm{
+    text-transform: capitalize;
+}
