@@ -1,12 +1,31 @@
-.ten-sp{
-    color: blue;
-    line-height: 10px;
-    padding-top: 20px;
-    padding-left: 11px;
-}
 img{
     padding-top: 10px;
     padding-bottom: 10px;
     width: 80%;
     border: 1px solid red;
+}
+.ten-sp{
+    color: blue;
+    line-height: 10px;
+    padding-top: 20px;
+    font-size: 25px;
+}
+.price{
+    text-transform: uppercase;
+    color: #e10c00;
+
+}
+.dong{
+    text-transform: lowercase;
+    vertical-align:super;
+    text-decoration: underline;
+}
+.dat-hang{
+    width: 80%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.khung-anh{
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
