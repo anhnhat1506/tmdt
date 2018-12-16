@@ -1,6 +1,6 @@
 <?php
 ini_set( "display_errors", true );
-define( "DB_DSN", "mysql:host=localhost;dbname=latihan" );
+define( "DB_DSN", "mysql:host=localhost;dbname=tmdt" );
 define( "DB_USERNAME", "root" );
 define( "DB_PASSWORD", "" );
 define('DB_CHARACSET', 'utf8');
