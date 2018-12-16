@@ -134,6 +134,7 @@ class Database {
         //grab keys
         $cols=array_keys($where);
         $colum=implode(', ', $col);
+
         foreach ($cols as $key) {
             $keys=$key."=?";
             $mark[]=$keys;

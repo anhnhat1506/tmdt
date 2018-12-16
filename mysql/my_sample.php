@@ -2,7 +2,9 @@
 include "config.php";
 
 
-$rs=$db->fetch_single_row('product','product_id',1);
-var_dump($rs);
+$rs= $db->fetch_multi_row('product',array('product_id','name','price','main_photo','category_id','brand_id','introduce'),array('category_id'=>'1'));
+foreach ($rs as $key) {
+    var_dump($key);
+}
 
 ?>

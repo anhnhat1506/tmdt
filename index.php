@@ -6,9 +6,16 @@ $GB_PAGE_TITLE = 'THƯƠNG MẠI ĐIỆN TỬ';
 
 
 //filter
+var_dump($_REQUEST);
 $category_id = -1;
+
 if(isset($_REQUEST['category_id'])){
     $category_id = $_REQUEST['category_id'];
+}
+
+$brand_id = -1;
+if(isset($_REQUEST['brand_id'])){
+    $brand_id = $_REQUEST['brand_id'];
 }
 
 ?>
@@ -41,13 +48,23 @@ if(isset($_REQUEST['category_id'])){
             //select * from category
             $all_category=$db->fetch_all('category');
             //select * from category
-            $all_product=$db->fetch_all('product')
+            if($category_id!=-1){
+                //san pham theo category
+                $all_product=$db->fetch_multi_row('product',array('product_id','name','price','main_photo','category_id','brand_id','introduce'),array('category_id'=>$category_id));
+            }elseif($brand_id!=-1){
+                //san pham theo brand
+                $all_product= $db->fetch_multi_row('product',array('product_id','name','price','main_photo','category_id','brand_id','introduce'),array('brand_id'=>$brand_id));
+            }else{
+                //tat ca san pham
+                $all_product=$db->fetch_all('product');
+            }
         ?>
         <h1 class="my-4">Brand</h1>
         <div class="list-group brand-list" id="brand-list">
+            <a href="index.php" class="list-group-item">- ALL -</a>
             <?php
                 foreach ($all_brand as $item) {
-                    echo '<a href="#" class="list-group-item"><img src="'.$item->sm_logo.'"/>'.$item->name.'</a>';
+                    echo '<a href="index.php?brand_id='.$item->brand_id.'" class="list-group-item"><img src="'.$item->sm_logo.'"/>'.$item->name.'</a>';
                 }
             ?>
         </div>
@@ -55,10 +72,11 @@ if(isset($_REQUEST['category_id'])){
 
         <h1 class="my-4">Category</h1>
         <div class="list-group category-list" id="category-list">
+            <a href="index.php" class="list-group-item">- ALL -</a>
             <?php
             foreach ($all_category as $item){
                 ?>
-                    <a href="#" class="list-group-item"><?=$item->name?></a>
+                    <a href="index.php?category_id=<?=$item->category_id?>" class="list-group-item"><?=$item->name?></a>
                 <?php
             }
             ?>
@@ -103,7 +121,7 @@ if(isset($_REQUEST['category_id'])){
                 foreach ($all_product as $item){
                    ?>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
+                        <div class="card">
                             <a href="#"><img class="card-img-top" src="<?=$item->main_photo?>" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
