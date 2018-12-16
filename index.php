@@ -29,8 +29,6 @@ if(isset($_REQUEST['brand_id'])){
   </head>
 <!--Chan v2xxl zzzzzzzzzzzz-->
   <body>
-
-
   <!--vuong coi-->
     <!--hom nay toi buon-->
     <!-- Navigation -->
@@ -68,8 +66,6 @@ if(isset($_REQUEST['brand_id'])){
                 }
             ?>
         </div>
-
-
         <h1 class="my-4">Category</h1>
         <div class="list-group category-list" id="category-list">
             <a href="index.php" class="list-group-item">- ALL -</a>
@@ -81,13 +77,9 @@ if(isset($_REQUEST['brand_id'])){
             }
             ?>
         </div>
-
-
         </div>
         <!-- /.col-lg-3 -->
-
         <div class="col-lg-9">
-
           <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -114,9 +106,7 @@ if(isset($_REQUEST['brand_id'])){
               <span class="sr-only">Next</span>
             </a>
           </div>
-
           <div class="row">
-
               <?php
                 foreach ($all_product as $item){
                    ?>
@@ -131,34 +121,20 @@ if(isset($_REQUEST['brand_id'])){
                             </div>
                         </div>
                     </div>
-
                     <?php
-
-
                 }
-
-
-
               ?>
-
-
-
           </div>
           <!-- /.row -->
-
         </div>
         <!-- /.col-lg-9 -->
-
       </div>
       <!-- /.row -->
-
     </div>
     <!-- /.container -->
-
     <?php
         include "./layout/footer.php";
     ?>
-
   </body>
 
 </html>
