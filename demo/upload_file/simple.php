@@ -32,10 +32,18 @@ if(isset($_FILES['image'])){
 ?>
 <html>
 <body>
-<!-- form cho phép upload lên, đích xử lý là chính nó simple.php (code phía trên) -->
+<!-- form cho phép upload lên, file xử lý ở SERVER là chính nó simple.php (code phía trên) -->
 <form action="simple.php" method="POST" enctype="multipart/form-data">
     <input type="file" name="image" />
     <input type="submit"/>
+    <hr/>
+    <?php if(isset($_FILES['image'])){ ?>
+        <ul>
+            <li>Sent file: <?=$_FILES['image']['name']?>
+            <li>File size: <?=$_FILES['image']['size']?>
+            <li>File type: <?=$_FILES['image']['type']?>
+        </ul>
+    <?php } ?>
 </form>
 
 </body>
