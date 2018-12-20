@@ -20,23 +20,23 @@ include $root_adm."/template/header.php"; ?>
 
     <table class="table table-bordered">
         <thead>
-        <tr>
-            <th>Mã SP</th>
-            <th>Tên SP</th>
-            <th>Hình Ảnh</th>
-            <th>Giá</th>
-            <th>Category</th>
-            <th>Brand</th>
-            <th>Sửa</th>
-            <th>Xóa</th>
+        <tr >
+            <th style="text-align: center;">Mã SP</th>
+            <th style="text-align: center;">Tên SP</th>
+            <th style="text-align: center;">Hình Ảnh</th>
+            <th style="text-align: center;">Giá</th>
+            <th style="text-align: center;">Category</th>
+            <th style="text-align: center;">Brand</th>
+            <th style="text-align: center;">Sửa</th>
+            <th style="text-align: center;">Xóa</th>
         </tr>
         </thead>
         <tbody>
         <?php foreach ($ket_qua as  $key => $value){ ?>
             <tr>
-                <td><?=$value['product_id']?></td>
+                <td style="text-align: center;"><?=$value['product_id']?></td>
                 <td><?=$value['name']?></td>
-                <td><?=$value['product_id']?></td>
+                <td><?=$value['main_photo']?></td>
                 <td><?=$value['price']?></td>
                 <td><?=$value['category_id']?></td>
                 <td><?=$value['brand_id']?></td>
