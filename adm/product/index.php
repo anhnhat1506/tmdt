@@ -18,17 +18,17 @@ include $root_adm."/template/header.php"; ?>
     }
     ?>
 
-    <table>
+    <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
+            <th>Mã SP</th>
+            <th>Tên SP</th>
+            <th>Hình Ảnh</th>
+            <th>Giá</th>
             <th>Category</th>
             <th>Brand</th>
-            <th>...</th>
-            <th>...</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
         </tr>
         </thead>
         <tbody>
@@ -40,8 +40,8 @@ include $root_adm."/template/header.php"; ?>
                 <td><?=$value['price']?></td>
                 <td><?=$value['category_id']?></td>
                 <td><?=$value['brand_id']?></td>
-                <td><a href="capnhat.php?product_id=<?=$value["product_id"]?>">Sua</a></td>
-                <td><a href="xoa.php?product_id=<?=$value["product_id"]?>">Xóa</a></td>
+                <td><a class="btn btn-round btn-success" href="capnhat.php?product_id=<?=$value["product_id"]?>"><i class="fa fa-pencil"></i></a></td>
+                <td><a class="btn btn-round btn-danger" href="xoa.php?product_id=<?=$value["product_id"]?>"><i class="fa fa-trash"></i></a></td>
             </tr>
         <?php } ?>
         </tbody>
