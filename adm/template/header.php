@@ -7,6 +7,38 @@ define( 'THEME_ROOT', 'http://localhost:81/tmdt/adm'); //website adm
 $root_dir = $_SERVER["DOCUMENT_ROOT"].'/tmdt';
 $root_adm=  $root_dir."/adm";
 include $root_dir."/mysqli/config.php";
+
+
+function fn_lay_tat_ca_ds_san_pham($ketnoi){
+    $rs_ds =[];
+    $sql_ds= mysqli_query($ketnoi,"select t1.*, t2.name AS category_name, t3.name as brand_name from product as t1
+                                        LEFT JOIN category as t2 on t1.category_id=t2.category_id
+                                        LEFT JOIN brand as t3 on t1.brand_id=t3.brand_id ORDER BY t1.product_id ASC;");
+    $total_num_rows = mysqli_num_rows($sql_ds);
+    for ($i=0;$i<$total_num_rows;$i++){
+        $rs_ds[]= mysqli_fetch_assoc($sql_ds);
+    }
+    return $rs_ds;
+}
+
+function fn_lay_tat_ca_category($ketnoi){
+    $rs = [];
+    $sql_rs  = mysqli_query($ketnoi,"select * from category");//f5 thuc thi mot cau truy van
+    $total_num_rows = mysqli_num_rows($sql_rs);//dem so luong dong sau khi da truy van sqls
+    for($i=0;$i<$total_num_rows;$i++){
+        $rs[] = mysqli_fetch_assoc($sql_rs); //lay tung dong
+    }
+    return $rs;
+}
+function fn_lay_tat_ca_brand($ketnoi){
+    $rs_brand =[];
+    $sql_rs_brand = mysqli_query($ketnoi, "select * from brand;");
+    $total_num_rows= mysqli_num_rows($sql_rs_brand);
+    for($i=0;$i< $total_num_rows;$i++){
+        $rs_brand[]=mysqli_fetch_assoc($sql_rs_brand);
+    }
+    return $rs_brand;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,11 +1,15 @@
 <?php
 $root_dir = $_SERVER["DOCUMENT_ROOT"].'/tmdt';
-include $root_dir."/mysqli/config.php";
+$root_adm=  $root_dir."/adm";
+$TPL_TITLE = "Dashboard";
+include $root_adm."/template/header.php"; ?>
+<!--CONTENT-->
+
+<?php
 $msg="";
 
-var_dump($_GET);
-
 if (isset($_POST['btn_capnhat'])){
+
     $product_id =  isset($_POST['product_id'])?$_POST['product_id']:"";
     $name = isset($_POST['name'])?$_POST['name']:"";
     $price = isset($_POST['price'])?$_POST['price']:"";
@@ -14,14 +18,13 @@ if (isset($_POST['btn_capnhat'])){
     $cate_id = isset($_POST['cate_id'])?$_POST['cate_id']:"";
     $brand_id = isset($_POST['brand_id'])?$_POST['brand_id']:"";
     $sql_capnhat="update product set name='$name',price=$price,main_photo='main_photo',introduce='$introduce',category_id=$cate_id,brand_id=$brand_id where product_id=$product_id";
-    var_dump($sql_capnhat);
+
     $kqua= mysqli_query($con,$sql_capnhat);
-    var_dump($kqua);
+
     if ($kqua){
-        //redirect ve trang them.php
-        header('Location: them.php');
+        $msg ="<p style='color:blue'>Cap nhat thanh cong!</p>";
     }else{
-        $msg ="<p style='color:yellow'>Xoa thất bại</p>";
+        $msg ="<p style='color:yellow'>Cap nhat  thất bại</p>";
     }
 }
 
@@ -30,8 +33,12 @@ if(isset($_GET['product_id'])){
     $sql="select * from product where product_id=$product_id;";
     $kq= mysqli_query($con,$sql);
     $product=mysqli_fetch_assoc($kq);
-    var_dump($product);
+
 ?>
+<?php
+    $all_category = fn_lay_tat_ca_category($con);
+    $all_brand = fn_lay_tat_ca_brand($con);
+ ?>
 
 <h1>Cập nhật SẢN PHẨM</h1>
 <form action="capnhat.php" method="post">
@@ -54,17 +61,34 @@ if(isset($_GET['product_id'])){
     </div>
     <div>
         <label>Cate_id</label>
-        <input type="number" name="cate_id" required value="<?=$product['category_id']?>"/>
+
+        <select name="cate_id">
+            <?php foreach ($all_category as $key =>$value){?>
+             <option <?=$value['category_id']==$product['category_id']?"selected=selected":""?> value="<?=$value['category_id']?>"><?=$value['name']?></option>
+            <?php } ?>
+        </select>
     </div>
     <div>
         <label>Brand_id</label>
-        <input type="number" name="brand_id" required value="<?=$product['brand_id']?>" />
+        <select name="brand_id">
+            <?php
+            foreach ($all_brand as $key => $value){?>
+                <option <?=$value['brand_id']==$product['brand_id']?"selected=selected":""?> value="<?=$value['brand_id']?>"><?=$value['name']?></option>
+
+            <?php }
+            ?>
+        </select>
     </div>
-    <h1><?=$msg?></h1>
     <input type="submit" value="Cập nhật sản phẩm" name="btn_capnhat" />
 </form>
 
 <?php } ?>
 
 <hr />
+<h1><?=$msg?></h1>
 <a href="index.php">Back</a>
+
+
+
+<!--/CONTENT-->
+<?php  include $root_adm."/template/footer.php"; ?>
