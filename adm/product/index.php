@@ -1,6 +1,7 @@
 <?php
 $root_dir = $_SERVER["DOCUMENT_ROOT"].'/tmdt';
 $root_adm=  $root_dir."/adm";
+$TPL_TITLE = "Quản lý sản phẩm";
 include $root_adm."/template/header.php"; ?>
 <!--CONTENT-->
 

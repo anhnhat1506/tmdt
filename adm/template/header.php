@@ -18,7 +18,7 @@ include $root_dir."/mysqli/config.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title><?=isset($TPL_TITLE)?$TPL_TITLE:"TRANG ADMIN"?></title>
 
     <!-- Bootstrap -->
     <link href="<?=THEME_ROOT?>/theme/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -77,13 +77,15 @@ include $root_dir."/mysqli/config.php";
                                     <li><a href="index3.html">Dashboard3</a></li>
                                 </ul>
                             </li>
+
                             <li><a><i class="fa fa-edit"></i> Danh muc <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="product">Quan ly san pham</a></li>
-                                    <li><a href="form.html">Quan ly category</a></li>
-                                    <li><a href="form.html">Quan ly brand</a></li>
+                                    <li><a href="product">Quản lý Products</a></li>
+                                    <li><a href="form.html">Quản lý Categories</a></li>
+                                    <li><a href="form.html">Quản lý Brands</a></li>
                                 </ul>
                             </li>
+
                             <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="general_elements.html">General Elements</a></li>
