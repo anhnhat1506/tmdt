@@ -36,7 +36,7 @@ include $root_adm."/template/header.php"; ?>
             <tr>
                 <td style="text-align: center;"><?=$value['product_id']?></td>
                 <td><?=$value['name']?></td>
-                <td><?=$value['main_photo']?></td>
+                <td><img src="<?=$value['main_photo']?>" alt="img"/></td>
                 <td><?=$value['price']?></td>
                 <td><?=$value['category_id']?></td>
                 <td><?=$value['brand_id']?></td>

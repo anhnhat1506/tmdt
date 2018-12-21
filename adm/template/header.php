@@ -1,5 +1,8 @@
 <?php
-define( 'THEME_ROOT', 'http://localhost:81/tmdt/adm');
+define( 'SITE_ROOT', 'http://localhost:81/tmdt'); //website
+define( 'SITE_IMG_ROOT', 'http://localhost:81/tmdt/img'); //website image
+define( 'THEME_ROOT', 'http://localhost:81/tmdt/adm'); //website adm
+
 //include config
 $root_dir = $_SERVER["DOCUMENT_ROOT"].'/tmdt';
 $root_adm=  $root_dir."/adm";
