@@ -17,9 +17,20 @@ if (isset($_POST['btn_capnhat'])){
     $introduce = isset($_POST['introduce'])?$_POST['introduce']:"";
     $cate_id = isset($_POST['cate_id'])?$_POST['cate_id']:"";
     $brand_id = isset($_POST['brand_id'])?$_POST['brand_id']:"";
-    $sql_capnhat="update product set name='$name',price=$price,main_photo='main_photo',introduce='$introduce',category_id=$cate_id,brand_id=$brand_id where product_id=$product_id";
+    $kqua= mysqli_query($con,"update product set name='$name',price=$price,main_photo='main_photo',introduce='$introduce',category_id=$cate_id,brand_id=$brand_id where product_id=$product_id");
 
-    $kqua= mysqli_query($con,$sql_capnhat);
+    //1. CAP NHAT N-N
+    // xoa di tat ca cac label cua san pham dang update
+    $kqua_xoa= mysqli_query($con,"delete from product_label where product_id=$product_id");
+
+
+    //insert lai N-N
+    if(isset($_POST["label"])  && count($_POST["label"])>0){
+        foreach ($_POST["label"] as $key=>$value){
+            $label_id  = $value;
+            mysqli_query($con,"insert into product_label(product_id,label_id) values ($product_id,$label_id)");
+        }
+    }
 
     if ($kqua){
         $msg ="<p style='color:blue'>Cap nhat thanh cong!</p>";
@@ -34,6 +45,15 @@ if(isset($_GET['product_id'])){
     $kq= mysqli_query($con,$sql);
     $product=mysqli_fetch_assoc($kq);
 
+
+    //lay tat ca cac label_id cua san pham dang edit
+
+    $all_label_id_full=fn_lay_tat_ca_label_id_cua_product($con,$product_id);
+    $all_label_ids = [];
+    foreach ($all_label_id_full as $key=>$value) {
+        $all_label_ids[] = $value["label_id"];
+    }
+    var_dump($all_label_ids);
 ?>
 <?php
     $all_category = fn_lay_tat_ca_category($con);
@@ -74,11 +94,27 @@ if(isset($_GET['product_id'])){
             <?php
             foreach ($all_brand as $key => $value){?>
                 <option <?=$value['brand_id']==$product['brand_id']?"selected=selected":""?> value="<?=$value['brand_id']?>"><?=$value['name']?></option>
-
             <?php }
             ?>
         </select>
     </div>
+
+    <div>
+        <label>Label</label>
+    <?php
+        $all_label = fn_lay_tat_ca_label($con);
+        foreach ($all_label as $key => $value){
+            ?>
+            <input type="checkbox" name="label[]"
+                   <?=in_array($value['label_id'],$all_label_ids)?"checked=checked":""?>
+                   value="<?=$value['label_id']?>"/><?=$value['name']?>
+            <?php
+        }
+        ?>
+
+
+    </div>
+
     <input type="submit" value="Cập nhật sản phẩm" name="btn_capnhat" />
 </form>
 

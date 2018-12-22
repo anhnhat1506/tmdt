@@ -39,6 +39,43 @@ function fn_lay_tat_ca_brand($ketnoi){
     }
     return $rs_brand;
 }
+function fn_lay_tat_ca_label($ketnoi){
+    $rs_label = [];
+    $sql_rs_label = mysqli_query($ketnoi,"select * from label;");
+    $total_num_rows = mysqli_num_rows($sql_rs_label);
+    for ($i=0; $i < $total_num_rows;$i++){
+        $rs_label[]= mysqli_fetch_assoc($sql_rs_label);
+    }
+    return $rs_label;
+}
+
+function fn_lay_tat_ca_label_of_product($ketnoi, $product_id){
+    $rs_label = [];
+    $sql_rs_label = mysqli_query($ketnoi,"select t1.product_id, t2.`name` as product_name, t3.name as label_name from product_label as t1
+                                                LEFT JOIN product as t2 on t1.product_id=t2.product_id
+                                                left JOIN label as t3 on t1.label_id= t3.label_id
+                                                WHERE t1.product_id = $product_id;
+                                                ");
+
+    $total_num_rows = mysqli_num_rows($sql_rs_label);
+    for ($i=0; $i < $total_num_rows;$i++){
+        $rs_label[]= mysqli_fetch_assoc($sql_rs_label);
+    }
+    return $rs_label;
+}
+
+function fn_lay_tat_ca_label_id_cua_product($ketnoi, $product_id){
+    $rs_label = [];
+    $sql_rs_label = mysqli_query($ketnoi,"select label_id from product_label where product_id=$product_id"); // [2,3]
+
+
+    $total_num_rows = mysqli_num_rows($sql_rs_label);
+    for ($i=0; $i < $total_num_rows;$i++){
+        $rs_label[]= mysqli_fetch_assoc($sql_rs_label);
+    }
+    return $rs_label;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

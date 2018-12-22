@@ -22,6 +22,8 @@ include $root_adm."/template/header.php"; ?>
             <th style="text-align: center;">Giá</th>
             <th style="text-align: center;">Category</th>
             <th style="text-align: center;">Brand</th>
+            <th style="text-align: center;">Label</th>
+
             <th style="text-align: center;">Sửa</th>
             <th style="text-align: center;">Xóa</th>
         </tr>
@@ -35,6 +37,16 @@ include $root_adm."/template/header.php"; ?>
                 <td><?=$value['price']?></td>
                 <td><?=$value['category_name']?></td>
                 <td><?=$value['brand_name']?></td>
+                <td>
+                    <?php
+                        $all_label_of_current_product = fn_lay_tat_ca_label_of_product($con,$value['product_id']);
+                      foreach ($all_label_of_current_product as $key_label=>$value_label){
+                          echo $value_label['label_name'].", ";
+                      }
+
+                    ?>
+
+                </td>
                 <td><a class="btn btn-round btn-success" href="capnhat.php?product_id=<?=$value["product_id"]?>"><i class="fa fa-pencil"></i></a></td>
                 <td><a class="btn btn-round btn-danger" href="xoa.php?product_id=<?=$value["product_id"]?>"><i class="fa fa-trash"></i></a></td>
             </tr>
