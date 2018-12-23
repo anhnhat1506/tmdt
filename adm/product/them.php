@@ -19,7 +19,7 @@ if(isset($_POST["btn_themsp"])){
     $result = mysqli_query($con,$sql);
     if ($result){
         $product_id_added = $con->insert_id;
-        //duyet tat ca phan tu cua label
+        //duyet tat ca phan tu cua label    
         if(isset($_POST["label"]) && count($_POST["label"])>0){
 
             foreach ($_POST["label"] as $key=>$value){

@@ -1,4 +1,13 @@
 <?php
+
+//Khoi dong session
+session_start();
+if(!isset($_SESSION['user'])){
+    header("Location: login.php");
+}
+$user = $_SESSION["user"];
+var_dump($_SESSION);
+
 define( 'SITE_ROOT', 'http://localhost:81/tmdt'); //website
 define( 'SITE_IMG_ROOT', 'http://localhost:81/tmdt/img'); //website image
 define( 'THEME_ROOT', 'http://localhost:81/tmdt/adm'); //website adm
@@ -267,7 +276,7 @@ function fn_lay_tat_ca_label_id_cua_product($ketnoi, $product_id){
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="images/img.jpg" alt="">John Doe
+                                <img src="http://revophone.kingweb.vn/upload/loaisp/apple-sharing.png" alt=""> <?=$user['full_name']?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -279,7 +288,7 @@ function fn_lay_tat_ca_label_id_cua_product($ketnoi, $product_id){
                                     </a>
                                 </li>
                                 <li><a href="javascript:;">Help</a></li>
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             </ul>
                         </li>
 
