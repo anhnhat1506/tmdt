@@ -1,7 +1,24 @@
 <?php
+
+ini_set("xdebug.var_display_max_children", -1);
+ini_set("xdebug.var_display_max_data", -1);
+ini_set("xdebug.var_display_max_depth", -1);
+
+
+//Khoi dong session
+session_start();
 include "./mysql/config.php";
 //seo title
 $GB_PAGE_TITLE = 'GIỎ HÀNG CỦA BẠN';
+
+
+
+//1. khoi tao hoac lay cart tu session neu co
+$cart['dssp']=[];
+$cart['total']=0;
+if(isset($_SESSION["cart"])){
+    $cart=$_SESSION["cart"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,72 +40,42 @@ $GB_PAGE_TITLE = 'GIỎ HÀNG CỦA BẠN';
 <div class="container">
 
     <div class="row">
+            <?=var_dump($cart)?>
             <table class="thong-so" style="width: 100%; margin-top: 5px; margin-bottom: 5px">
                 <tr>
                     <th colspan="3" style="text-align: center">Giỏ hàng</th>
                 </tr>
+                <?php
+                    foreach ($cart['dssp'] as $cart_item){
+
+                ?>
                 <tr>
                     <td style="width:22%;">
-                        <img src="./img/phone/apple/iphone-xs-256gb-white-600x600.jpg" class="hinh-gio-hang">
+                        <img src="<?=$cart_item['main_photo']?>" class="hinh-gio-hang">
                     </td>
                     <td>
-                        <a href="#" class="cart-sp-1">OPPO A3s 32GB</a>
-                        <ul>
-                            <li>Ốp lưng (áp dụng từ 14/12)</li>
-                            <li>Cơ hội trúng 61 xe Wave Alpha khi trả góp Home Credit <a href="#">Xem chi tiết</a></li>
-                        </ul>
-                        <div>
-                            <select style="width: 30%">
-                                <option value="0">Màu: Đỏ</option>
-                                <option value="1">Đỏ</option>
-                                <option value="2">Tím</option>
-                            </select>
-                        </div>
-
-
+                        <a href="#" class="cart-sp-1"><?=$cart_item['name']?></a>
                     </td>
                     <td>
-                        <p class="price-cart"><span>4.690.000</span> <span class="dong-cart">đ</span></p>
+                        <p class="price-cart"><span><?=number_format($cart_item['price'],0, ',', '.')?></span> <span class="dong-cart">đ</span></p>
                         <div class="quantity buttons_added">
-                            <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="" style="text-align: center"><input type="button" value="+" class="plus">
+                            <a type="button" style="padding: 5px 15px;" href="cart_process.php?do=minus&product_id=<?=$cart_item['product_id']?>" class="minus">-</a>
+                            <input type="number" step="1" min="1" max="5" name="quantity" value="<?=$cart_item['so_luong']?>" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="" style="text-align: center">
+                            <a type="button" style="padding: 5px 15px;" href="cart_process.php?do=add2cart&product_id=<?=$cart_item['product_id']?>" class="minus">+</a>
+                            <a type="button" style="padding: 5px 15px;" href="cart_process.php?do=delete&product_id=<?=$cart_item['product_id']?>" class="minus">X</a>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="">
-                        <img src="./img/phone/apple/iphone-xs-256gb-white-600x600.jpg" class="hinh-gio-hang">
-                    </td>
-                    <td>
-                        <a href="#" class="cart-sp-1">OPPO A3s 32GB</a>
-                        <ul>
-                            <li>Ốp lưng (áp dụng từ 14/12)</li>
-                            <li>Cơ hội trúng 61 xe Wave Alpha khi trả góp Home Credit <a href="#">Xem chi tiết</a></li>
-                        </ul>
-                        <div>
-                            <select style="width: 30%">
-                                <option value="0">Màu: Đỏ</option>
-                                <option value="1">Đỏ</option>
-                                <option value="2">Tím</option>
-                            </select>
-                        </div>
+                <?php } ?>
 
-
-                    </td>
-                    <td>
-                        <p class="price-cart"><span>4.690.000</span> <span class="dong-cart">đ</span></p>
-                        <div class="quantity buttons_added">
-                            <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="" style="text-align: center"><input type="button" value="+" class="plus">
-                        </div>
-                    </td>
-                </tr>
                 <tr>
                     <td>
-                        <p>Tổng tiền:</p>
-                        <p class="thanh-tien-1">Bạn cần thanh toán:</p>
+                        <p>Tổng tiền: </p>
+
                     </td>
                     <td colspan="2" class="thanh-tien">
-                        <p>12.380.000₫</p>
-                        <p class="thanh-tien-1">12.380.000₫</p>
+                        <p> <?=number_format($cart['total'],0, ',', '.')?> ₫</p>
+
                     </td>
                 </tr>
             </table>

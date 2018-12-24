@@ -39,7 +39,7 @@ $GB_PAGE_TITLE = $product->name;
         <div class="col-lg-8">
             <p class="ten-sp"><?=$product->name?></p>
             <h4 class="price">giá: <span><?=$product->price?></span> <span class="dong">đ</span></h4>
-            <button type="button" class="btn btn-warning dat-hang">đặt hàng</button>
+            <a type="button" class="btn btn-warning dat-hang" href="cart_process.php?do=add2cart&product_id=<?=$product->product_id?>">đặt hàng</a>
             <table class="thong-so" style="width: 100%; margin-top: 5px; margin-bottom: 5px">
                 <tr>
                     <th colspan="2" style="text-align: center">Thông số kĩ thuật</th>

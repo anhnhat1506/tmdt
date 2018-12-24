@@ -117,7 +117,7 @@ if(isset($_REQUEST['brand_id'])){
                                 <h4 class="card-title">
                                     <a href="detail.php?product_id=<?=$item->product_id?>"><?=$item->name?></a>
                                 </h4>
-                                <h5><?=$item->price?></h5>
+                                <h5><?=number_format($item->price,0,"",".")?></h5>
                             </div>
                         </div>
                     </div>
