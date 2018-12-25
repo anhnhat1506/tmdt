@@ -67,7 +67,6 @@ if(isset($_SESSION["cart"])){
                     </td>
                 </tr>
                 <?php } ?>
-
                 <tr>
                     <td>
                         <p>Tổng tiền: </p>
@@ -117,8 +116,6 @@ if(isset($_SESSION["cart"])){
                     <span class="the-atm">Bằng thẻ ATM, Visa, Master</span></button>
             </td>
         </table>
-
-
     </div>
     <!-- /.row -->
 

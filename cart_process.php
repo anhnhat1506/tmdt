@@ -62,8 +62,6 @@ if($do=="minus"){
         }
     }
 }
-
-
 if($do=="delete"){
     $product_id = $_GET["product_id"];
     foreach ($cart['dssp'] as $key=> &$item){

@@ -1,21 +1,15 @@
 <?php
 include "./mysql/config.php";
 $product_id = $_REQUEST['product_id'];
-
-
 $product=$db->fetch_single_row('product','product_id',$product_id);
-
 //seo title
 $GB_PAGE_TITLE = $product->name;
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <?php include "./layout/header.php"?>
     <link href="./css/detail.css" rel="stylesheet">
-
 </head>
 <!--Chan v2xxl zz jih hkjh kjhkjhkj kj hk hzzzzzzzzzz-zz--->
 <body>
@@ -24,8 +18,6 @@ $GB_PAGE_TITLE = $product->name;
 <!--hom nayh gt hfgh fg toi buon-->
 <!-- Navigation -->
 <?php include "./layout/nav.php";?>
-
-
 <!-- Page Content -->
 <div class="container">
 
@@ -77,10 +69,8 @@ $GB_PAGE_TITLE = $product->name;
             </table>
         </div>
         <!-- /.col-lg-8 -->
-
     </div>
     <!-- /.row -->
-
 </div>
 <!-- /.container -->
 <?php

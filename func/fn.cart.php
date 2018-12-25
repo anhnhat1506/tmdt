@@ -8,7 +8,6 @@
             }
             return $rs;
     }
-
     function fn_kiem_tra_product_id_ton_tai_trong_gio_hang($cart,$product_id){
         $rs = false;
         foreach ($cart['dssp'] as $item){
@@ -27,6 +26,5 @@
         }
         //total
         $cart['total']=$total;
-
     }
 ?>

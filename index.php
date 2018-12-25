@@ -1,10 +1,7 @@
 <?php
 include "./mysql/config.php";
-
 //seo title
 $GB_PAGE_TITLE = 'THƯƠNG MẠI ĐIỆN TỬ';
-
-
 //filter
 var_dump($_REQUEST);
 $category_id = -1;
@@ -12,18 +9,14 @@ $category_id = -1;
 if(isset($_REQUEST['category_id'])){
     $category_id = $_REQUEST['category_id'];
 }
-
 $brand_id = -1;
 if(isset($_REQUEST['brand_id'])){
     $brand_id = $_REQUEST['brand_id'];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
     <?php include "./layout/header.php"?>
     <link href="./css/index.css" rel="stylesheet">
   </head>
