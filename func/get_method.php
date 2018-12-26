@@ -1,17 +1,18 @@
-<?php
-if($_GET['name']||$_GET['age']){
-    echo "Chào mừng bạn".$_GET['name']."<br/>";
-    echo "Mừng tuổi bạn ".$_GET['age'];
-exit();
-}
-?>
+
 <html>
     <body>
-        <form action="<?php ?>" method="GET">
+        <form action="<?=$_SERVER['PHP_SELF']?>" method="GET">
             Tên: <input type="text" name="name"/><br/><br/>
-            Tuổi: <input type="text" name="age"/>
-            <input type="submit"/>
+            Email: <input type="text" name="email"/><br/>
+            <input type="submit" value="Submit" name="submit"/>
         </form>
 
     </body>
 </html>
+<?php
+
+if(isset($_GET['name'])||isset($_GET['email'])){
+    echo "Xin chào ".$_GET['name']."<br/>";
+    echo "Email của bạn là ".$_GET['email']."<br/>";
+}
+?>
