@@ -20,7 +20,7 @@ if(isset($_REQUEST['brand_id'])){
     <?php include "./layout/header.php"?>
     <link href="./css/index.css" rel="stylesheet">
   </head>
-<!--Chan v2xxl zzzzzzzzzzzz-->
+<!--Chan zzzzzzzzzzzz-->
   <body>
   <!--vuong coi-->
     <!--hom nay toi buon-->
