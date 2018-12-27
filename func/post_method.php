@@ -1,50 +1,29 @@
 <?php
-// define variables and set to empty values
-$name = $email = $gender = $comment = $website = "";
+if (empty($_POST['name'] || $_POST['age'])){
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = test_input($_POST["name"]);
-    $email = test_input($_POST["email"]);
-    $website = test_input($_POST["website"]);
-    $comment = test_input($_POST["comment"]);
-    $gender = test_input($_POST["gender"]);
+        if (preg_match("/[^A-Za-z'-]/", $_POST['name'])){
+            die("Bạn đã nhập sai - Vui lòng nhập lại nhé -Cảm ơn");
+        }
+        exit();
+
 }
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+
 ?>
 
-<h2>Form Method Post</h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    Tên: <input type="text" name="name">
-    <br><br>
-    E-mail: <input type="text" name="email">
-    <br><br>
-    Website: <input type="text" name="website">
-    <br><br>
-    Comment: <textarea name="comment" rows="5" cols="40"></textarea>
-    <br><br>
-    Giới tính:
-    <input type="radio" name="gender" value="female">Female
-    <input type="radio" name="gender" value="male">Male
-    <input type="radio" name="gender" value="other">Other
-    <br><br>
-    <input type="submit" name="submit" value="Submit">
-</form>
+<html>
+<body>
+    <form action="<?php $_PHP_SELF ?>" method="post">
+        Họ Tên: <input name="name" type="text"/><br/><br/>
+        Tuổi: <input name="age" type="text"/>
+        <input type="submit" name="submit" value="Gửi"/>
+    </form>
 
+</body>
+
+
+</html>
 <?php
-echo "<h2>Xuất ra:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $website;
-echo "<br>";
-echo $comment;
-echo "<br>";
-echo $gender;
+echo "Xin chào bạn ".$_POST['name']."<br/>";
+echo "Tuổi của bạn là ".$_POST['age']." tuổi";
 ?>
