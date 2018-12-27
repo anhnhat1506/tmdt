@@ -4,7 +4,7 @@ $hello  = "Hello World";
 var_dump($text);
 var_dump($hello);
 $trimmed= trim($text);
-//làm mất đi space trên test
+//làm mất đi space trên test asss
 var_dump($trimmed);
 $trimmed = trim($text," -.");
 var_dump($trimmed);
