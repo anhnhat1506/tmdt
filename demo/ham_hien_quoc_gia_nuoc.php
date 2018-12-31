@@ -20,6 +20,4 @@
         echo "Quốc gia $quoc_gia có thủ đô là: $thu_do"."<br/>";
     }
     //fix 1 to day
-
-    //next step
 ?>
