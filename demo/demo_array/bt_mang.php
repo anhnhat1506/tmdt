@@ -1,5 +1,6 @@
 <?php
 $a = array(-1,8,6,2,0,100,270,4,123,28,27,14,-5,-8,16);
+var_dump($a);
 //a. Viết hàm đưa vào mảng a, trả về 1 mảng mới toàn số chẵn
 
 function fn_get_all_even($a){
@@ -105,7 +106,16 @@ function fn_find_so_chinh_phuong($a){
 }
 var_dump(fn_find_so_chinh_phuong($a));
 //so nguyen to
-
+function fn_find_so_nguyen_to($a){
+    $so_nguyen_to=[];
+    for ($i=2;$i<count($a);$i++){
+        if($a[$i]%$i==0){
+            $so_nguyen_to[]=$a[$i];
+        }
+    }
+    return $so_nguyen_to;
+}
+var_dump(fn_find_so_nguyen_to($a));
 echo "----------";
 $mang2  = array(
     'k1'=>1025,
