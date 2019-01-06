@@ -174,5 +174,26 @@ function fn_loai_bo_trung($a){
     }
     return $mang_sau;
 }
-var_dump(fn_loai_bo_trung($arr));
+
+function fn_loai_trung($a){
+    $mang_sau_do=[];
+    for ($i = 0; $i <count($a);$i++){
+        $dem_trung_1=0;
+        for ($j = 0; $j < count($a);$j++){
+            if ($a[$i]==$a[$j]){
+                $dem_trung_1++;
+            }
+        }
+        if ($dem_trung_1==1){
+            $mang_sau_do[]= $a[$i];
+        }
+    }
+    return $mang_sau_do;
+}
+$aaa=[9,8,1,9,6,3,4,6];
+var_dump(fn_loai_trung($aaa));
+var_dump(fn_loai_bo_trung($aaa));
+$s="13149";
+$s[$s[1]]=$s[1]+$s[3];
+print_r($s);
 ?>
