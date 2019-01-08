@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>HIHI</title>
+    <style type="text/css">
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main">HELLO</h1>
+    <h1>HELLO 2</h1>
+    <h1>HELLO 3</h1>
+    <h1>HELLO 4</h1>
+    <h1>HELLO 5</h1>
+    <h2 class="result" style="color:red;background-color: yellow;"></h2>
+    <h2 class="result" style="color:red;background-color: yellow;"></h2>
+    <h2 class="result" style="color:red;background-color: yellow;"></h2>
+    <h2 class="result" style="color:red;background-color: yellow;"></h2>
+    <h2 class="result" style="color:red;background-color: yellow;"></h2>
+    <h2 class="result" style="color:red;background-color: yellow;"></h2>
+    <button id="btn">Click</button>
+
+    <script type="text/javascript" language="javascript">
+        var btn = document.getElementById("btn");
+        var h1 = document.getElementById("main");
+        var results = document.getElementsByClassName("result");
+        console.log(results);
+        btn.addEventListener("click",fn_bam_vao_btn);
+        function fn_bam_vao_btn() {
+           // h1.classList.add("red");
+           // console.log(h1.classList);
+            //h1.style.color="blue";
+            //h1.style.fontStyle="italic";
+            //thay doi noiduyng
+          //  h1.innerHTML="<code>Hello world!</code>";
+            var all_h1 = document.getElementsByTagName("h1");
+
+            //set all
+            for (var i=0;i<results.length; i++){
+                results[i].innerHTML =  all_h1[2].innerHTML;
+            }
+        }
+    </script>
+</body>
+</html>
