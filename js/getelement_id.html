@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VD getelementID</title>
+    <style type="text/css"></style>
+</head>
+<body>
+    <h2>Finding HTML Element by Id</h2>
+    <p id="intro">Hello</p>
+    <p id="test_id"></p>
+    <p id="demo"></p>
+    <button onclick="alert('Hello')">Click me.</button>
+    <script type="text/javascript" language="JavaScript">
+        var elementById = document.getElementById("intro");
+        var elementByTagName = document.getElementsByTagName("h2");
+        document.getElementById("test_id").innerHTML= "Hay noi xin chao nao: " + elementById.innerHTML;
+        document.getElementById("demo").innerHTML= "Xin chao cac ban "+ elementByTagName[0].innerHTML;
+    </script>
+</body>
+</html>
