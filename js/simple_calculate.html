@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        input[type=text]{
+            padding: 2px;
+            margin: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    So 1: <input type="text" value="" id="txt1"/><br/>
+    So 2: <input type="text" value="" id="txt2"> <br/>
+    <input type="button" id="btn_add" value="+"/>
+    <input type="button" id="btn_sub" value="-"/>
+    <input type="button" id="btn_multi" value="*"/>
+    <input type="button" id="btn_devi" value="/"/>
+    <input type="button" id="btn_xoa" value="Del"/><br/>
+    KQ: <input type="text" value="" id="kq" /> <br/>
+<script type="text/javascript" language="JavaScript">
+    var  txt1= document.getElementById("txt1");
+    var  txt2= document.getElementById("txt2");
+    var  kq = document.getElementById("kq");
+    var btn_add = document.getElementById("btn_add");
+    var btn_xoa = document.getElementById("btn_xoa");
+    btn_add.addEventListener("click",fn_click)
+    function fn_click(event) {
+        var num1 = parseInt(txt1.value);
+        var num2 =  parseInt(txt2.value);
+        kq.value = fn_tinh(num1,num2,"+");
+    }
+    var btn_sub = document.getElementById("btn_sub");
+    btn_sub.addEventListener("click",fn_tru);
+    function fn_tru() {
+            var num1 = parseInt(txt1.value);
+            var num2 = parseInt(txt2.value);
+            /*
+        if (!isNaN(num)|| !isNaN(txt2.value)) {
+            alert("Vui long nhap day du so");
+        }*/
+            kq.value = num1 - num2;
+
+    }
+    var  btn_multi= document.getElementById("btn_multi")
+    btn_multi.addEventListener("click",fn_nhan);
+    function fn_nhan() {
+        var num1 = parseInt(txt1.value);
+        var num2 = parseInt(txt2.value);
+        kq.value= num1 * num2;
+    }
+    var  btn_devi= document.getElementById("btn_devi")
+    btn_devi.addEventListener("click",fn_chia);
+    function fn_chia() {
+        var num1 = txt1.value;
+        var num2 = txt2.value;
+        kq.value= num1 / num2;
+    }
+    function fn_tinh(num1,num2,phep_tinh){
+        //phep_tinh: +-x/
+        return eval(num1+phep_tinh+num2);//2+3
+    }
+    btn_xoa.addEventListener("click",function () {
+        txt1.value="";
+        txt2.value="";
+        kq.value="";
+    })
+
+</script>
+</body>
+</html>
