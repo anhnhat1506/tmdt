@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        .red{
+            color:red;
+            padding: 10px;
+            border: 1px red solid;
+        }
+    </style>
+</head>
+<body>
+
+<p class="p1">1</p>
+<p class="p1" id="pp">2</p>
+<p class="p1">3</p>
+<p class="p1">4</p>
+
+<script type="text/javascript" language="JavaScript">
+    var btn1 = document.createElement("button");
+    btn1.classList.add("red");
+    var body = document.getElementsByTagName("body");
+    var btn_txt = document.createTextNode("Click me now");
+    btn1.appendChild(btn_txt);
+    body[0].prepend(btn1);
+    //add event
+    btn1.addEventListener("click",function(){
+        alert(this.innerText);
+        btn1.classList.toggle("red");
+    });
+
+    //tao div dong
+    var div1 = document.createElement("div");
+    div1.setAttribute("id","div1");
+    div1.setAttribute("class","div1");
+    var p1=document.createElement("p");
+    var p1_txt= document.createTextNode("hello");
+    p1.appendChild(p1_txt);
+    div1.appendChild(p1);
+    body[0].appendChild(div1);
+
+</script>
+</body>
+</html>

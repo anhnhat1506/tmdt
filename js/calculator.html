@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy Tính</title>
+    <style type="text/css">
+        form{
+            width: 250px;
+            background: #ddd;
+            padding: 30px 15px 15px 15px;
+            -webkit-box-shadow: 0 2px 5px 2px rgba(0,0,0,6);
+            box-shadow: 0 2px 5px 2px rgba(0,0,0,6);
+            position: absolute;
+            top: 25%;
+            left: 42%;
+        }
+        input[type="text"]{
+            width: 100%;
+            font-size: 36px;
+            padding: 5px 5px;
+            box-sizing: border-box;
+            text-align: right;
+        }
+        input[type="button"]{
+            width: 57px;
+            height: 55px;
+            margin: 1px;
+            background: #aaa;
+            font-size: 24px;
+            color: #fff;
+        }
+        hr{
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="calculator">
+        <input type="text" disabled id="man_hinh"/>
+        <input type="text" disabled id="man_hinh_tam"/>
+        <hr/>
+        <input type="button" value="&radic;"/>
+        <input type="button" value="CE"/>
+        <input type="button" value="C" id="btn_C"/>
+        <input type="button" value="&larr;"/>
+        <br/>
+        <input type="button" value="7" class="btn_num"/>
+        <input type="button" value="8" class="btn_num"/>
+        <input type="button" value="9" class="btn_num"/>
+        <input type="button" value="+" class="btn_tinh"/>
+        <br/>
+        <input type="button" value="4" class="btn_num"/>
+        <input type="button" value="5" class="btn_num"/>
+        <input type="button" value="6" class="btn_num"/>
+        <input type="button" value="-" class="btn_tinh"/>
+        <br/>
+        <input type="button" value="1" class="btn_num"/>
+        <input type="button" value="2" class="btn_num"/>
+        <input type="button" value="3" class="btn_num"/>
+        <input type="button" value="*" class="btn_tinh"/>
+        <br/>
+        <input type="button" value="0" class="btn_num"/>
+        <input type="button" value="."/>
+        <input type="button" value="="/>
+        <input type="button" value="/" class="btn_tinh"/>
+
+    </form>
+
+    <script type="text/javascript" language="JavaScript">
+        var man_hinh= document.getElementById("man_hinh");
+        var man_hinh_tam= document.getElementById("man_hinh_tam");
+        var txt_man_hinh = 0;
+        var txt_man_hinh_tam = null;
+        var btn_C= document.getElementById("btn_C");
+        var btn_tinh = document.getElementsByClassName("btn_tinh");
+        for (var i=0; i<btn_tinh.length;i++){
+            btn_tinh[i].addEventListener("click",function (){
+                var phep_tinh = this.value; //+-8/
+                fn_tinh(phep_tinh);
+                fn_hien_thi();
+            });
+        }
+        btn_C.addEventListener("click",function () {
+            txt_man_hinh=0;
+            txt_man_hinh_tam=null;
+            fn_hien_thi();
+        });
+        var btn_nums=document.getElementsByClassName("btn_num");
+        for (var i=0; i<btn_nums.length;i++){
+            btn_nums[i].addEventListener("click",function (){
+                var num = this.value;
+                txt_man_hinh +=num;
+                fn_hien_thi();
+            });
+        }
+        function fn_hien_thi(){
+            man_hinh.value=parseInt(txt_man_hinh);
+            if(txt_man_hinh_tam!=null){
+                man_hinh_tam.value = parseInt(txt_man_hinh_tam);
+            }else{
+                man_hinh_tam.value="";
+            }
+        }
+        function fn_tinh(phep_tinh){ //+-*/
+            if(txt_man_hinh_tam!=null && !isNaN(txt_man_hinh)){
+                txt_man_hinh = eval(parseInt(txt_man_hinh_tam)+(phep_tinh)+parseInt(txt_man_hinh));//eval("2+3")
+                txt_man_hinh_tam=null;
+            }else{
+                txt_man_hinh_tam = txt_man_hinh;
+                txt_man_hinh=0;
+            }
+        }
+
+    </script>
+</body>
+</html>
