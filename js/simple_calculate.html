@@ -30,18 +30,27 @@
     function fn_click(event) {
         var num1 = parseInt(txt1.value);
         var num2 =  parseInt(txt2.value);
-        kq.value = fn_tinh(num1,num2,"+");
+        if (isNaN(num1)|| isNaN(num2)){
+            alert("Bạn vui lòng nhập đầy đủ 2 số");
+        } else {
+            kq.value = fn_tinh(num1,num2,"+");
+        }
+        //kq.value = fn_tinh(num1,num2,"+");
     }
     var btn_sub = document.getElementById("btn_sub");
     btn_sub.addEventListener("click",fn_tru);
     function fn_tru() {
             var num1 = parseInt(txt1.value);
             var num2 = parseInt(txt2.value);
-            /*
-        if (!isNaN(num)|| !isNaN(txt2.value)) {
-            alert("Vui long nhap day du so");
+            if (isNaN(num1)|| isNaN(num2)){
+                alert("Bạn vui lòng nhập đầy đủ 2 số");
+            } else {
+                kq.value = num1 - num2;
+            }
+       /*
+        }{
+
         }*/
-            kq.value = num1 - num2;
 
     }
     var  btn_multi= document.getElementById("btn_multi")
@@ -49,13 +58,24 @@
     function fn_nhan() {
         var num1 = parseInt(txt1.value);
         var num2 = parseInt(txt2.value);
-        kq.value= num1 * num2;
+        if (isNaN(num1)|| isNaN(num2)){
+            alert("Bạn vui lòng nhập đầy đủ 2 số");
+        } else {
+            kq.value= num1 * num2;
+        }
+
     }
     var  btn_devi= document.getElementById("btn_devi")
     btn_devi.addEventListener("click",fn_chia);
     function fn_chia() {
         var num1 = txt1.value;
         var num2 = txt2.value;
+        /*if (isNaN(num1)|| isNaN(num2)){
+            alert("Bạn vui lòng nhập đầy đủ 2 số");
+        } else {
+            kq.value= num1 / num2;
+        }*/
+        // th PHÉP chia làm bị lỗi chưa ra đc
         kq.value= num1 / num2;
     }
     function fn_tinh(num1,num2,phep_tinh){
@@ -67,7 +87,14 @@
         txt2.value="";
         kq.value="";
     })
-
+    /*if (isNaN(txt1.value)|| isNaN(txt2.value)) {
+        alert("Vui long nhap day du so");
+        kq.value="";}
+    else {
+        fn_tru();
+        fn_nhan();
+        fn_chia();
+    }*/
 </script>
 </body>
 </html>
