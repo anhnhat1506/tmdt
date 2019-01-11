@@ -68,15 +68,15 @@
     var  btn_devi= document.getElementById("btn_devi")
     btn_devi.addEventListener("click",fn_chia);
     function fn_chia() {
-        var num1 = txt1.value;
-        var num2 = txt2.value;
-        /*if (isNaN(num1)|| isNaN(num2)){
+        var num1 = parseInt(txt1.value);
+        var num2 = parseInt(txt2.value);
+        if (isNaN(num1)|| isNaN(num2)){
             alert("Bạn vui lòng nhập đầy đủ 2 số");
         } else {
             kq.value= num1 / num2;
-        }*/
+        }
         // th PHÉP chia làm bị lỗi chưa ra đc
-        kq.value= num1 / num2;
+        //kq.value= num1 / num2;
     }
     function fn_tinh(num1,num2,phep_tinh){
         //phep_tinh: +-x/
