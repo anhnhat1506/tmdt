@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .intro{
+            color:red;
+            font-weight: bold;
+            background-color: greenyellow;
+        }
+    </style>
+
+</head>
+<body>
+<p> this is a paragraph</p>
+<p> this is a another paragraph</p>
+<button>Thay doi append trong p</button>
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        $("button").click(function () {
+            $("<span><strong> hello</strong></span>").appendTo("p");
+        })
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <img src="iphone-7-hh-600x600%20(1).jpg"><br/>
+    <button>Thay doi Attribute cua img</button>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                //set 1 gia tri attribute
+                /*$("img").attr("width","250px");
+                $("img").attr("height","250px"); */
+                //set nhieu gtri attribute cho trong 1 ham
+                $("img").attr({
+                    class: "class1",
+                    border: "3px solid",
+                    width: "250px",
+                    height: "250px",
+                });
+            })
+        })
+
+    </script>
+</body>
+</html>

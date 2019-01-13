@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Before Jquery</title>
+    <style type="text/css">
+        .mau{
+            color: #0e90d2;
+            font-weight: bolder;
+            background-color: yellow;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>This is a paragraph</p>
+    <p>This is a another paragraph</p>
+    <button>Event thay doi before p</button>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("p:first").addClass("mau");
+                $("p").before("<strong> Hello</strong>");
+            })
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detach Jquery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>This is paragraph 1</p>
+    <p>This is paragraph 2</p>
+    <button>Detach P</button>
+    <div>Day la cai ko bt detach vi no ko phai la the p</div>
+    <p>This is paragraph 3</p>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("p").detach();
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inner Width</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div style="height: 100px; width: 300px; padding: 10px; margin: 3px;border: 1px cadetblue solid; background-color: lightgreen;">
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</div>
+<button>CLick vao day thong bao gtri innerwidth cua div</button>
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        $("button").click(function () {
+            alert("InnerWidth trong div nay la " + $("div").innerWidth() + "px");
+        })
+    })
+</script>
+</body>
+</html>

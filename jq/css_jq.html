@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS style JQuery</title>
+    <style type="text/css">
+        p{
+            color: #0e90d2;
+            font-weight: bolder;
+            border: 1px red solid;
+            font-size: 50px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>This is a paragraph</p>
+    <button>Thay doi thuoc tinh css</button>
+    <script type="text/javascript" language="JavaScript">
+        /*var x;
+        x = $("p").css("font-size");
+        alert(x); */
+        $(document).ready(function () {
+            $("button").click(function () {
+                /* thay doi 1 doi tuong
+                $("p").css("color","red");
+                */
+                //thay doi nhieu doi tuong css
+                $("p").css({
+                    color: "red",
+                    background: "violet",
+                    border: "2px yellow dotted"
+                })
+            })
+        })
+    </script>
+</body>
+</html>

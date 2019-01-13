@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .intro{
+            color:red;
+            font-weight: bold;
+            background-color: greenyellow;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p> this is a paragraph</p>
+    <p> this is a another paragraph</p>
+    <button id="append1">Thay doi append trong P</button>
+    <ol>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <li>list item 3</li>
+    </ol>
+    <button id="append2">Thay doi OL</button>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            var current = $("ol li").length;
+            $("#append1").click(function () {
+                $("p").append("<strong> Append Text</strong>");
+            })
+            $("#append2").click(function () {
+                current = current+1;
+                $("ol").append("<li>List item new "+current+"</li>");
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML method</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>This is a paragraph</p>
+    <p>This is a another paragraph</p>
+    <button>Click vao day thay doi gtri text trong p: first</button>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("p:first").html("<strong>Hello <i>World!</i></strong>")
+            })
+        })
+    </script>
+</body>
+</html>

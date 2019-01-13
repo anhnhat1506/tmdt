@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offset Jquery</title>
+    <style type="text/css">
+        .mau{
+            color: #0e90d2;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>This is a paragraph</p>
+    <div>aaaaaaaaaaaaaaaaaaa</div>
+    <button id="btn1">Click vao day xd toa do</button>
+    <button id="btn2">Click vao day xd toa do</button>
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            //set toa do cho the p chi click dc 1 lan do da set cung roi
+            $("p").offset({top: 100, left: 300});
+        });
+        //set theo ham cua no toa do se thay sau moi lan click button
+        $("#btn2").click(function () {
+            $("div").offset(function (index, coordinates) {
+                if (index==0){
+                    $("div").addClass("mau");
+                    coordinates.top += 30;
+                    coordinates.left += 10;
+                }
+                return $(this).offset(coordinates);
+            })
+        })
+    })
+</script>
+</body>
+</html>

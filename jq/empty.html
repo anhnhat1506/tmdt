@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empty Jqery</title>
+    <style type="text/css">
+        .div1{
+            color: #0b97c4;
+            font-size: 25px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="div1">
+        <p>This is a paragraph inside div</p>
+        <p>This is a another paragraph insite div</p>
+    </div>
+    <p>This is a paragraph outsite </p>
+    <button>Click vao se xoa doi tuong trong div</button>
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        $("button").click(function () {
+            $(".div1").empty();
+        })
+    })
+</script>
+</body>
+</html>

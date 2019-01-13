@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .intro{
+            color:red;
+            font-weight: bold;
+            background-color: greenyellow;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+<h1>This is a heading</h1>
+<p>This is a paragraph</p>
+<p>This is a another paragraph</p>
+
+<button id="btn1">addClass: intro</button>
+<button id="btn2">removeClass: intro</button>
+<button id="btn3">toggleClass: intro</button>
+<button id="btn4">hasClass: intro</button>
+
+<script type="text/javascript" language="JavaScript">
+
+    $(document).ready(function () {
+
+        //thêm class
+        $("#btn1").click(function(){
+            $("p:first").addClass("intro");
+        });
+
+        //removeClass: xóa class
+        $("#btn2").click(function(){
+            $("p:first").removeClass("intro");
+        });
+
+        //toggleClass coogn tắc bật tắt class
+        $("#btn3").click(function(){
+            $("p:first").toggleClass("intro");
+        });
+
+        //hasClass: ktra tồn tại class hay không?
+        $("#btn4").click(function(){
+            alert($("p:first").hasClass("intro"));
+        });
+    })
+</script>
+</body>
+</html>
