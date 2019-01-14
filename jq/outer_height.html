@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OuterHeight Jquery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="height: 100px; width: 300px; padding: 10px; margin: 3px;border: 1px cadetblue solid; background-color: lightgreen;">
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</div>
+<button>Click vao day</button>
+<p></p>
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        $("button").click(function () {
+            alert("Chieu cao cua the div nay la " + $("div").outerHeight() + "px");
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offset Parent Jquery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="div1">
+        <p>this is a paragraph</p>
+    </div>
+</div>
+<button>Click me</button>
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        $("button").click(function () {
+            $(".div1").offsetParent().css({
+                    "background":"yellow",
+                    "color" :"blue",
+                    "fontSize":"25px"
+            }
+                );
+        })
+    })
+</script>
+</body>
+</html>

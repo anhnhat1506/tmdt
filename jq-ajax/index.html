@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .loading{
+            display: none;
+        }
+        #content .item{
+            float:left;
+            width: 30%;
+            border:1px gray solid;
+            border-radius: 10px;
+            margin: 5px;
+            min-height: 230px;
+
+        }
+        #content img{
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="loading" class="loading"><img src="https://loading.io/spinners/balls/lg.circle-slack-loading-icon.gif"/></div>
+
+<div id="content"></div>
+
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        //ajax gần giống như một form
+        $.ajax({
+            url: "https://jsonplaceholder.typicode.com/photos",// địa chỉ api yêu cầu lấy dữ liệu (action)
+            method: "get",//post, get
+            dataType: "json", //html, json: dữ liệu nhận về
+            contentType: "application/json; charset=utf-8", //header gửi lên
+            data:  {} ,//object dữ liệu gửi lên để tương tác với api
+            beforeSend: function(){ //trước khi gửi thì làm cái gì đó?
+                console.log("beforeSend...");
+                $("#loading").show();
+            },
+            success: function (data) { //  nhận về dữ liệu thành công
+                var $content = $("#content");
+                var str = "";
+                data.forEach(function (value,index) {
+                    str+= "<div class='item'>";
+                    str+="<p>"+value.title+"</p>";
+                    str+="<img src='"+value.thumbnailUrl+"'/>";
+                    str+= "</div>";
+                });
+                $content.html(str);
+
+                console.log("success...");
+                console.log(data);
+            },
+            error:function(xhr){
+                console.log("error...");
+                alert("Lỗi: "+xhr.statusText +" - "+xhr.responseText);
+                //xhr.statusText // mã lỗi
+                //xhr.responseText // message của lỗi
+            },
+            complete: function () { //lỗi hay thành công thì cuối cùng cũng kết thúc
+                $("#loading").hide();
+                console.log("complete...");
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Height Jquery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="height: 100px; width: 200px; padding: 10px; margin: 3px;border: 1px cadetblue solid; background-color: lightgreen;">
+    aaaaaaaaaaaaaaaaaaaaa
+</div>
+<button>Click vao day</button>
+<p></p>
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function () {
+        $("button").click(function () {
+            alert("Chieu cao cua the div nay la " + $("div").outerWidth() + "px");
+        })
+    })
+</script>
+</body>
+</html>

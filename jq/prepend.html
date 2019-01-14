@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prepend Jquery</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>this is a paragraph</p>
+    <p>this is a another paragraph</p>
+    <button>Click me</button>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                //truong hop 1
+                $("p").prepend("<b>Prepended text </b>");
+            })
+        })
+    </script>
+</body>
+</html>
