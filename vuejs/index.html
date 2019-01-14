@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #app .loading{
+            width:50px;
+        }
+        #app .item{
+            float:left;
+            width: 30%;
+            border:1px gray solid;
+            border-radius: 10px;
+            margin: 5px;
+            min-height: 230px;
+            text-align: center;
+        }
+        #app img{
+            width: 100%;
+        }
+        table td, table th{
+            border:1px gray solid;
+            padding:10px;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        table img{
+            max-width: 50px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1 v-html="message"></h1>
+    <h1>{{message}}</h1>
+    <div id="loading" class="loading"><img src="https://loading.io/spinners/balls/lg.circle-slack-loading-icon.gif"/></div>
+
+    <table>
+        <thead>
+            <tr>
+                <td>product_id</td>
+                <td>name</td>
+                <td>main_photo</td>
+                <td>command...</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(sp, index) in dssp">
+                <td>{{sp.product_id}}</td>
+                <td>{{sp.name}}</td>
+                <td>
+                    <img v-bind:src="fn_lay_anh_full(sp.main_photo)"/>
+                </td>
+                <td>
+                    <button v-on:click="fn_remove(index)">Xoa</button>
+                </td>
+            </tr>
+            <tr v-if="dssp.length==0">
+                <td colspan="3">Rỗng</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript" language="JavaScript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue 22 2!',
+            dssp:[]
+        },
+        methods:{
+            fn_lay_anh_full: function(link_thieu){
+                return "http://localhost:81/tmdt/"+link_thieu;
+            },
+            fn_remove:function(index){
+                app.dssp.splice(index, 1); //js cat di phan tu thu index trong mang
+            },
+            fn_get_api:function () {
+                $.ajax({
+                    url: "http://localhost:81/tmdt/api.php",// địa chỉ api yêu cầu lấy dữ liệu (action)
+                    method: "get",//post, get
+                    dataType: "json", //html, json: dữ liệu nhận về
+                    contentType: "application/json; charset=utf-8", //header gửi lên
+                    data:  {} ,//object dữ liệu gửi lên để tương tác với api
+                    beforeSend: function(){ //trước khi gửi thì làm cái gì đó?
+                        console.log("beforeSend...");
+                        $("#loading").show();
+                    },
+                    success: function (data) { //  nhận về dữ liệu thành công
+                        app.dssp = data; //ma ghi this thi khong nhan, no nhan cua thang $.ajax
+                    },
+                    error:function(xhr){
+                        console.log("error...");
+                        alert("Lỗi: "+xhr.statusText +" - "+xhr.responseText);
+                        //xhr.statusText // mã lỗi
+                        //xhr.responseText // message của lỗi
+                    },
+                    complete: function () { //lỗi hay thành công thì cuối cùng cũng kết thúc
+                        $("#loading").hide();
+                        console.log("complete...");
+                    }
+                });
+            }
+
+        }
+    });
+    app.fn_get_api();
+</script>
+</body>
+</html>

@@ -14,10 +14,10 @@
             border-radius: 10px;
             margin: 5px;
             min-height: 230px;
-
+            text-align: center;
         }
         #content img{
-            text-align: center;
+            width: 100%;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -31,7 +31,7 @@
     $(document).ready(function () {
         //ajax gần giống như một form
         $.ajax({
-            url: "https://jsonplaceholder.typicode.com/photos",// địa chỉ api yêu cầu lấy dữ liệu (action)
+            url: "http://localhost:81/tmdt/api.php",// địa chỉ api yêu cầu lấy dữ liệu (action)
             method: "get",//post, get
             dataType: "json", //html, json: dữ liệu nhận về
             contentType: "application/json; charset=utf-8", //header gửi lên
@@ -44,9 +44,11 @@
                 var $content = $("#content");
                 var str = "";
                 data.forEach(function (value,index) {
+                    var img = "http://localhost:81/tmdt/"+value.main_photo;
                     str+= "<div class='item'>";
-                    str+="<p>"+value.title+"</p>";
-                    str+="<img src='"+value.thumbnailUrl+"'/>";
+                    str+= "<p>" + value.product_id+"</p>";
+                    str+="<p>"+value.name+"</p>";
+                    str+="<img src='"+img+"'/>";
                     str+= "</div>";
                 });
                 $content.html(str);
