@@ -1,24 +1,25 @@
+<?php
+include "./mysql/config.php";
+$category_id=-1;
+$brand_id=-1;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php include "./layout/header.php"?>
     <link href="./css/index.css" rel="stylesheet">
 </head>
-<!--Chan v2xxl zzzzzzzzzzzz-->
 <body>
-
-<!-- Navigation -->
 <?php include "./layout/nav.php";?>
 
 <!-- Page Content -->
 <div class="container">
 
     <div class="row">
-        <div>
 
         <div class="col-lg-3">
             <?php
-            /*select * from brand
+            //select * from brand
             $all_brand=$db->fetch_all('brand');
             //select * from category
             $all_category=$db->fetch_all('category');
@@ -32,25 +33,27 @@
             }else{
                 //tat ca san pham
                 $all_product=$db->fetch_all('product');
-            }*/
+            }
             ?>
-            <?php
-                function fn_ds_sp($ketnoi){
-                    $rs_ds_sp=[];
-                    $sql_ds_sp_test= mysqli_num_rows($ketnoi,"select * from product");
-                    $tong_so_dong_dssp= mysqli_num_rows($sql_ds_sp_test);
-                    var_dump($tong_so_dong_dssp);
-                    for ($i=0;$i< $tong_so_dong_dssp;$i++){
-                        $rs_ds_sp[]= mysqli_fetch_all($sql_ds_sp_test);
-                    }
-                    return $rs_ds_sp;
+            <h1 class="my-4">Brand</h1>
+            <div class="list-group brand-list" id="brand-list">
+                <a href="index.php" class="list-group-item">- ALL -</a>
+                <?php
+                foreach ($all_brand as $item) {
+                    echo '<a href="index.php?brand_id='.$item->brand_id.'" class="list-group-item"><img src="'.$item->sm_logo.'"/>'.$item->name.'</a>';
                 }
-
-            ?>
-            <?php
-            $tat_ca_dssp= fn_ds_sp($con);
-
-            ?>
+                ?>
+            </div>
+            <h1 class="my-4">Category</h1>
+            <div class="list-group category-list" id="category-list">
+                <a href="index.php" class="list-group-item">- ALL -</a>
+                <?php
+                foreach ($all_category as $item){
+                    ?>
+                    <a href="index.php?category_id=<?=$item->category_id?>" class="list-group-item"><?=$item->name?></a>
+                    <?php
+                }
+                ?>
             </div>
         </div>
         <!-- /.col-lg-3 -->
@@ -83,16 +86,16 @@
             </div>
             <div class="row">
                 <?php
-                foreach ($tat_ca_dssp as $key=>$value){
+                foreach ($all_product as $item){
                     ?>
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card">
-                            <a href="#"><img class="card-img-top" src="<?=$value['main_photo']?>" alt=""></a>
+                            <a href="#"><img class="card-img-top" src="<?=$item->main_photo?>" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href=""><?=$value['name']?></a>
+                                    <a href="detail.php?product_id=<?=$item->product_id?>"><?=$item->name?></a>
                                 </h4>
-                                <h5><?=number_format($value['price'],0,"",".")?></h5>
+                                <h5><?=number_format($item->price,0,"",".")?></h5>
                             </div>
                         </div>
                     </div>

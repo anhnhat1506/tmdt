@@ -32,9 +32,8 @@
         //ajax gần giống như một form
         $.ajax({
             url: "http://localhost:81/tmdt/api.php",// địa chỉ api yêu cầu lấy dữ liệu (action)
-            method: "get",//post, get
+            type: "get",//post, get
             dataType: "json", //html, json: dữ liệu nhận về
-            contentType: "application/json; charset=utf-8", //header gửi lên
             data:  {} ,//object dữ liệu gửi lên để tương tác với api
             beforeSend: function(){ //trước khi gửi thì làm cái gì đó?
                 console.log("beforeSend...");

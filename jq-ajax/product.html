@@ -1,0 +1,147 @@
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <style>
+        .loading{
+            display: none;
+        }
+        #content .item{
+            float:left;
+            width: 30%;
+            border:1px gray solid;
+            border-radius: 10px;
+            margin: 5px;
+            min-height: 230px;
+            text-align: center;
+        }
+        #content img{
+            width: 100%;
+        }
+        #tbl_product td img{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="loading" class="loading"><img src="https://loading.io/spinners/balls/lg.circle-slack-loading-icon.gif"/></div>
+
+    <div class="col-md-12" id="header">
+        <button class="btn btn-primary" id="btn_show_them_san_pham">Thêm sản phẩm</button>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-bordered" id="tbl_product">
+            <thead>
+            <tr >
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">Mã SP</th>
+                <th style="text-align: center;">Tên SP</th>
+                <th style="text-align: center;">Hình Ảnh</th>
+                <th style="text-align: center;">Giá</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal_them_san_pham" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Them san phẩm</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form_them_san_pham">
+                    <div class="form-group">
+                        <label for="name">name</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price</label>
+                        <input type="number" class="form-control" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="main_photo">main_photo</label>
+                        <input type="text" class="form-control" name="main_photo">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="fn_them_san_pham();">Thêm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal_form_cap_nhat_san_pham" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">cap nhat san phẩm</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form_cap_nhat_san_pham">
+                    <div class="form-group">
+                        <label for="product_id">product_id</label>
+                        <input type="text" class="form-control" name="product_id" disabled="disabled">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">name</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price</label>
+                        <input type="number" class="form-control" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="main_photo">main_photo</label>
+                        <input type="text" class="form-control" name="main_photo">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="fn_cap_nhat_san_pham();">Cap nhat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="func.js"></script>
+<script type="text/javascript">
+    //hien ra modal them
+    $("#btn_show_them_san_pham").click(function () {
+        $("#modal_them_san_pham").modal("show");
+    });
+
+    function fn_them_san_pham(){
+        var name = $("#form_them_san_pham input[name=name]").val();
+        var price = $("#form_them_san_pham input[name=price]").val();
+        var main_photo = $("#form_them_san_pham input[name=main_photo]").val();
+        var data_param = {
+            'name': name,
+            'price': price,
+            'main_photo': main_photo
+        };
+        fn_ajax_them_san_pham(data_param);
+    }
+    fn_ajax_lay_table_product();
+</script>
+</body>
+</html>
