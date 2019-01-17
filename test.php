@@ -1,7 +1,18 @@
 <?php
 include "./mysql/config.php";
-$category_id=-1;
-$brand_id=-1;
+//seo title
+$GB_PAGE_TITLE = 'THƯƠNG MẠI ĐIỆN TỬ';
+//filter
+var_dump($_REQUEST);
+$category_id = -1;
+
+if(isset($_REQUEST['category_id'])){
+    $category_id = $_REQUEST['category_id'];
+}
+$brand_id = -1;
+if(isset($_REQUEST['brand_id'])){
+    $brand_id = $_REQUEST['brand_id'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +20,11 @@ $brand_id=-1;
     <?php include "./layout/header.php"?>
     <link href="./css/index.css" rel="stylesheet">
 </head>
+<!--Chan zzzzzzzzzzzz-->
 <body>
+<!--vuong coi-->
+<!--hom nay toi buon-->
+<!-- Navigation -->
 <?php include "./layout/nav.php";?>
 
 <!-- Page Content -->

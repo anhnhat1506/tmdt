@@ -18,7 +18,8 @@ include $root_dir."/mysqli/config.php";
         $rs['ket_qua'] =true;
         $rs['thong_bao'] = 'Cập nhật thành công';
     }
-header('Content-type: application/json');
-echo json_encode($rs);
-exit;
+    //TRA VE JSON
+    header('Content-type: application/json');
+    echo json_encode($rs);
+    exit;
 ?>
