@@ -32,7 +32,7 @@
         }
     }
 
-    $em = new Employee();
+    $em = new Employee(); //ngon com
     $em->sayHello();
     echo "\n<br>";
     $boss = new Boss();
